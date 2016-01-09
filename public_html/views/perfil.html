@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+    <center style="margin-top: 10%;">
+        <form class="form-register" style="width: 50%;" data-ng-init="details()">
+            <h2 class="form-register">Datos de usuario</h2>
+            <div class="form-group">                    
+                <label class="col-lg-3 control-label">Nombre y Apellido</label>
+                <div class="col-lg-7">
+                    <input type="text" class="form-control" ng-model="userDetails.nombre" name="emailProf" required/>
+                </div>
+            </div>
+            <div class="form-group">                    
+                <label class="col-lg-3 control-label">Documento</label>
+                <div class="col-lg-7">
+                    <input type="text" class="form-control" ng-model="userDetails.documento" name="emailProf" required/>
+                </div>
+            </div>
+            <div class="form-group">                    
+                <label class="col-lg-3 control-label">Contraseña</label>
+                <div class="col-lg-7">
+                    <input type="password" class="form-control" ng-model="userDetails.clave" name="emailProf" required/>
+                </div>
+            </div>
+            <div class="form-group">                    
+                <label class="col-lg-3 control-label">Domicilio particular</label>
+                <div class="col-lg-7">
+                    <input type="text" class="form-control" ng-model="userDetails.domicilioParticular" name="emailProf" required/>
+                </div>
+            </div>
+            <div class="form-group">                    
+                <label class="col-lg-3 control-label">Domicilio entrega</label>
+                <div class="col-lg-7">
+                    <input type="text" class="form-control" ng-model="userDetails.domicilioEntrega" name="emailProf" required/>
+                </div>
+            </div>
+            <div class="form-group">                    
+                <label class="col-lg-3 control-label">E-mail</label>
+                <div class="col-lg-7">
+                    <input type="text" class="form-control" ng-model="userDetails.email" name="emailProf" required/>
+                </div>
+            </div>
+            <div class="form-group">                    
+                <label class="col-lg-3 control-label">Telefono</label>
+                <div class="col-lg-7">
+                    <input type="text" class="form-control" ng-model="userDetails.telefono" name="emailProf" required/>
+                </div>
+            </div>
+        </form>
+    </center>
+</body>
+</html>
