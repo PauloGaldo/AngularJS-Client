@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-miApp.service('loginService', function ($http, $q) {
+miApp.service('loginService', function ($http, $q, $cookies) {
 
     this.getAccess = function (Auth) {
-        var uri = 'http://localhost:8084/Natura/oauth/token';
+        var uri = 'http://localhost:8080/oauth/token';
         var request = $http({
             url: uri,
             method: 'post',
@@ -23,12 +23,14 @@ miApp.service('loginService', function ($http, $q) {
     };
 
     this.logoutApi = function (Token) {
-        var uri = 'http://localhost:8084/Natura/oauth/logout';
+        var uri = 'http://localhost:8080/oauth/logout';
+        var token = $cookies.getObject('XSRF-TOKEN');
         var request = $http({
             url: uri,
             method: 'post',
             headers: {
                 'Authorization': 'Bearer ' + Token,
+                'X-XSRF-TOKEN': token,
                 'Content-type': 'application/json'
             }
         });
@@ -36,7 +38,7 @@ miApp.service('loginService', function ($http, $q) {
     };
 
     this.refreshToken = function (Token) {
-        var uri = 'http://localhost:8084/Natura/oauth/token';
+        var uri = 'http://localhost:8080/oauth/token';
         var request = $http({
             url: uri,
             method: 'post',

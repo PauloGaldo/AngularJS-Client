@@ -4,10 +4,8 @@
  * and open the template in the editor.
  */
 miApp.service('registerService', function ($http, $q) {
-    console.log("registerService");
     this.registerUser = function (Usuarios) {
-        console.log("registerUser");
-        var uri = 'http://localhost:8084/Natura/register/add';
+        var uri = 'https://naturaapp.herokuapp.com/register/add';
         var request = $http({
             url: uri,
             method: 'post',

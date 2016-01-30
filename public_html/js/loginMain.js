@@ -8,28 +8,32 @@ var miApp = angular.module('Natura', ['ngRoute', 'ngCookies'])
             $routeProvider
                     .when("/", {
                         controller: "loginController",
-                        templateUrl: "views/login.html"
+                        templateUrl: "views/login/login.html"
                     })
                     .when("/login", {
                         controller: "loginController",
-                        templateUrl: "views/login.html"
+                        templateUrl: "views/login/login.html"
                     })
                     .when("/register", {
                         controller: "registerController",
-                        templateUrl: "views/register.html"
+                        templateUrl: "views/login/register.html"
                     })
                     .otherwise({
                         redirectTo: "/",
-                        templateUrl: "views/login.html"
+                        templateUrl: "views/login/login.html"
                     });
         })
         .run(function ($rootScope, $location, $cookies, $window, loginService) {
             $rootScope.render = $cookies.get('render');
-            console.log($window.location.pathname);
+            var data = $cookies.getObject('token');
             $rootScope.$on('$routeChangeStart', function () {
                 if ($window.location.pathname === "/NaturaWEB/" || $window.location.pathname === "/NaturaWEB/index.html") {
                     if ($rootScope.render === "true") {
-                        $window.location.href = 'home.html#/';
+                        if(data.role[0].authority === 'ROLE_ADMIN'){
+                            $window.location.href = 'home.html#/';
+                        }else{
+                            $window.location.href = 'ventas.html#/';
+                        }                        
                     }
                 }
             });

@@ -3,16 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-miApp.controller('productosController', ['$scope', 'productosService', 'usuariosService', '$rootScope', 'ngTableParams', 'factoryCache', function ($scope, productosService, usuariosService, $rootScope, ngTableParams, factoryCache) {
-
-        console.log("productosController");
-
-        $rootScope.$on('$routeChangeStart', function () {
-            usuariosService.getDetail().then(function (datos) {
-                factoryCache.put('_details', datos);
-                console.log(factoryCache.get('_details'));
-            });
-        });
+miApp.controller('productosController', ['$scope', '$routeParams', 'productosService', 'usuariosService', '$rootScope', 'ngTableParams', 'factoryCache', function ($scope, $routeParams, productosService, usuariosService, $rootScope, ngTableParams, factoryCache) {
 
         $scope.listProduct = function () {
             var listCache = factoryCache.get('_list');
@@ -25,5 +16,16 @@ miApp.controller('productosController', ['$scope', 'productosService', 'usuarios
                 });
             }
         };
+        $scope.searchProduct = function () {
+            var idProd = $routeParams.idProducto;
+            productosService.getProdById(idProd).then(function (datos) {
+                $scope.producto = datos;
+            });
+        };
+
+
+        productosService.getImageById(1).then(function (datos) {
+            $scope.img = datos.data;
+        });
     }]);
 

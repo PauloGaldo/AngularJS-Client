@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title></title>        
+    </head>
+    <body>
+
+        <div class="panel panel-primary" data-ng-init="searchProduct()" style="margin-top: 5%; width: 60%; margin-left: 20%;"> 
+            <div class="panel panel-heading">Detalles de producto: #{{producto.productoId}}</div>
+            <div class="panel-body">
+                <form class="form-horizontal col-xs-7">
+                    <div class="form-group">
+                        <label class="col-xs-5">Nombre de producto:</label>                
+                        <div type="text" class="col-xs-7">{{producto.nombre}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5">Marca:</label>
+                        <div type="text" class="col-xs-7">{{producto.marcas.descripcion}}</div>  
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5">Tipo de producto:</label>            
+                        <div type="text" class="col-xs-7">{{producto.tiposProductos.descripcion}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5">Zona Actuacion</label>
+                        <div type="text" class="col-xs-7">{{producto.zonaActuacion.descripcion}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5">Fecha de vencimiento</label>
+                        <div type="text" class="col-xs-7">{{producto.fechaVencimiento}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5">Precio unitario</label>
+                        <div type="text" class="col-xs-7">{{producto.precioUnitario}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5">Stock</label>
+                        <div type="text" class="col-xs-7">{{producto.stock}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5">Estado</label>
+                        <div type="text" class="col-xs-7">{{producto.estado}}</div>
+                    </div>                    
+                </form>  
+                <img class="" ng-src="http://localhost:8080/productos/image/{{producto.productoId}}.jpg" style="width: 40%; height: 40%;">
+
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -25,17 +25,22 @@ and open the template in the editor.
             </thead>
             <tr ng-repeat="producto in productos">
                 <td>{{producto.productoId}}</td>
-                <td>{{producto.nombre}}</td>
+                <td><a href="#/producto/{{producto.productoId}}">{{producto.nombre}}</a></td>
                 <td>{{producto.marcas.descripcion}}</td>        
                 <td>{{producto.zonaActuacion.descripcion}}</td>        
                 <td>{{producto.tiposProductos.descripcion}}</td>        
                 <td>{{producto.stock}}</td>        
                 <td>{{producto.precioUnitario}}</td>        
                 <td>{{producto.estado}}</td>        
-                        
+
                 <td><img ng-src="data:image/JPEG;base64,{{producto.imagen}}" style="width: 90px; height: 90px;"></td>
             </tr>        
         </table>
+
+        <label>marcas</label>
+        <select ng-controller="marcasController" data-ng-init="listMarcas()">
+            <option ng-repeat="marca in marcas" value="{{marca}}">{{marca.descripcion}}</option>
+        </select>
     </body>
 </html>
 

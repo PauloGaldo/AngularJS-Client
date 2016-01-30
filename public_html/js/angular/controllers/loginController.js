@@ -5,7 +5,6 @@
  */
 miApp.controller('loginController', function ($scope, loginService, $location, $rootScope, $cookies, $window) {
 
-    console.log("loginController");    
     $scope.usuario = {username: '', password: ''};
 
     $scope.go = function (path) {
@@ -14,20 +13,23 @@ miApp.controller('loginController', function ($scope, loginService, $location, $
     };
 
     $scope.iniciarSesion = function () {
-        console.log("iniciarSesion");
         $promesa = loginService.getAccess($scope.usuario);
         $promesa.success(function (datos) {
             $cookies.put('render', true);
             $cookies.putObject('token', datos);
             $rootScope.render = true;
-            $window.location.href = 'home.html';
+            var role = datos.role[0].authority;
+            if(role === 'ROLE_ADMIN'){
+                $window.location.href = 'home.html';
+            }else{
+                $window.location.href = 'ventas.html';
+            }            
         }).error(function (datos) {
             $scope.error = datos.error_description;
         });
     };
 
     $scope.logoutSession = function () {
-        console.log("logoutSession");
         var token = $cookies.getObject('token');
         $promesa = loginService.logoutApi(token.access_token);
         $promesa.then(function (datos) {

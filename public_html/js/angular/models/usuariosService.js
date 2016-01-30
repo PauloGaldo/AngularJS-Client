@@ -5,13 +5,11 @@
  */
 miApp.service('usuariosService', function ($http, $q, $cookies) {
 
-    console.log("usuariosService");
     this.getUsers = function () {
-        console.log("getUsers");
         var datosRecu = null;
         var deferred = $q.defer();
         var token = $cookies.getObject('token');
-        $http.get('http://localhost:8084/Natura/user/list', {
+        $http.get('http://localhost:8080/usuarios/list', {
             headers: {
                 'Authorization': 'Bearer ' + token.access_token
             }
@@ -23,8 +21,7 @@ miApp.service('usuariosService', function ($http, $q, $cookies) {
     };
 
     this.getDetail = function () {
-        console.log("getDetail");
-        var uri = 'http://localhost:8084/Natura/user/details';
+        var uri = 'http://localhost:8080/usuarios/details';
         var token = $cookies.getObject('token');
         var request = $http({
             url: uri,

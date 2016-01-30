@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var miApp = angular.module('Natura', ['ngRoute', 'ngTable', 'ngCookies'])
+var miApp = angular.module('Natura', ['ngRoute', 'ngTable', 'ngCookies', 'angular-loading-bar'])
         .config(function ($routeProvider) {
             $routeProvider
                     .when("/", {
@@ -13,7 +13,7 @@ var miApp = angular.module('Natura', ['ngRoute', 'ngTable', 'ngCookies'])
                     })
                     .when("/usuarios", {
                         controller: "usuariosController",
-                        templateUrl: "views/usuarios.html",
+                        templateUrl: "views/admin/usuarios.html",
                         tittle: "Usuarios"
                     })
                     .when("/perfil", {
@@ -27,15 +27,25 @@ var miApp = angular.module('Natura', ['ngRoute', 'ngTable', 'ngCookies'])
                     })
                     .when("/productos", {
                         controller: "productosController",
-                        templateUrl: "views/productos.html",
+                        templateUrl: "views/productos/productos.html",
                         tittle: "Productos"
+                    })
+                    .when("/producto/:idProducto", {
+                        controller: "productosController",
+                        templateUrl: "views/productos/producto.html",
+                        tittle: "Producto #"
+                    })
+                    .when("/marcas", {
+                        controller: "marcasController",
+                        templateUrl: "views/marcas/marcas.html",
+                        tittle: "Marcas"
                     })
                     .otherwise({
                         redirectTo: "/",
                         templateUrl: "views/inicio.html"
                     });
         })
-        .run(function ($rootScope, $location, $cookies, $window, loginService, factoryCache) {
+        .run(function ($rootScope, $location, $cookies, $window, usuariosService, factoryCache, $routeParams) {
             $rootScope.render = $cookies.get('render');
             var token = $cookies.getObject('token');
             $rootScope.$on('$routeChangeStart', function () {
@@ -46,6 +56,18 @@ var miApp = angular.module('Natura', ['ngRoute', 'ngTable', 'ngCookies'])
                 }
             });
             $rootScope.$on("$routeChangeSuccess", function (event, currentRoute, previousRoute) {
-                $rootScope.title = currentRoute.$$route.tittle;                
+                var number = $routeParams.idProducto;
+                if (typeof number === 'undefined') {
+                    $rootScope.title = currentRoute.$$route.tittle;
+                } else {
+                    $rootScope.title = currentRoute.$$route.tittle + $routeParams.idProducto;
+                }
+                var listCache = factoryCache.get("_details");
+                if (listCache) {
+                } else {
+                    usuariosService.getDetail().then(function (datos) {
+                        factoryCache.put('_details', datos);
+                    });
+                }
             });
         });
