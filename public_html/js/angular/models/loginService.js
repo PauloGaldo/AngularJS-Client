@@ -6,7 +6,7 @@
 miApp.service('loginService', function ($http, $q, $cookies) {
 
     this.getAccess = function (Auth) {
-        var uri = 'http://localhost:8080/oauth/token';
+        var uri = 'https://naturaapp.herokuapp.com/oauth/token';
         var request = $http({
             url: uri,
             method: 'post',
@@ -23,7 +23,7 @@ miApp.service('loginService', function ($http, $q, $cookies) {
     };
 
     this.logoutApi = function (Token) {
-        var uri = 'http://localhost:8080/oauth/logout';
+        var uri = 'https://naturaapp.herokuapp.com/oauth/logout';
         var token = $cookies.getObject('XSRF-TOKEN');
         var request = $http({
             url: uri,
