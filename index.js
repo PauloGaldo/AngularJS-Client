@@ -8,13 +8,8 @@ app = express();
 
 app.use(express.static(__dirname + '/public_html'));
 app.get('/', function(req, res) {
-    res.redirect('https://naturaweb.herokuapp.com
-app.get('*',function(req,res,next){
-  if(req.headers['x-forwarded-proto']!='https')
-    res.redirect('https://naturaweb.herokuapp.com'+req.url)
-  else
-    next() /* Continue to other routes if we're not redirecting */
-})
+    res.redirect('https://naturaweb.herokuapp.com/')
+});
 
 var server = app.listen(process.env.PORT || 80);
 
