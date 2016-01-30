@@ -8,11 +8,10 @@ app = express();
 
 app.use(express.static(__dirname + '/public_html'));
 app.get('/', function(req, res) {
-    res.redirect('index.html')
-});
+    res.redirect('https://naturaweb.herokuapp.com
 app.get('*',function(req,res,next){
   if(req.headers['x-forwarded-proto']!='https')
-    res.redirect('https://mypreferreddomain.com'+req.url)
+    res.redirect('https://naturaweb.herokuapp.com'+req.url)
   else
     next() /* Continue to other routes if we're not redirecting */
 })
