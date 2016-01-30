@@ -9,7 +9,7 @@ miApp.service('productosService', function ($http, $q, $cookies) {
         var datosRecu = null;
         var deferred = $q.defer();
         var token = $cookies.getObject('token');
-        $http.get('http://localhost:8080/productos/list', {
+        $http.get('https://naturaapp.herokuapp.com/productos/list', {
             headers: {
                 'Authorization': 'Bearer ' + token.access_token
             }
@@ -23,7 +23,7 @@ miApp.service('productosService', function ($http, $q, $cookies) {
         var datosRecu = null;
         var deferred = $q.defer();
         var token = $cookies.getObject('token');
-        var url = 'http://localhost:8080/productos/image/' + id + '.jpg';
+        var url = 'https://naturaapp.herokuapp.com/productos/image/' + id + '.jpg';
         $http({
             url: url,
             method: 'GET',
@@ -42,7 +42,7 @@ miApp.service('productosService', function ($http, $q, $cookies) {
         var datosRecu = null;
         var deferred = $q.defer();
         var token = $cookies.getObject('token');
-        $http.get('http://localhost:8080/productos/search', {
+        $http.get('https://naturaapp.herokuapp.com/productos/search', {
             params: {
                 'id': idProducto
             },
