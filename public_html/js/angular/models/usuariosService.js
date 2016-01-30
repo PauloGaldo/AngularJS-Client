@@ -9,7 +9,7 @@ miApp.service('usuariosService', function ($http, $q, $cookies) {
         var datosRecu = null;
         var deferred = $q.defer();
         var token = $cookies.getObject('token');
-        $http.get('http://localhost:8080/usuarios/list', {
+        $http.get('https://naturaapp.herokuapp.com/usuarios/list', {
             headers: {
                 'Authorization': 'Bearer ' + token.access_token
             }
@@ -21,7 +21,7 @@ miApp.service('usuariosService', function ($http, $q, $cookies) {
     };
 
     this.getDetail = function () {
-        var uri = 'http://localhost:8080/usuarios/details';
+        var uri = 'https://naturaapp.herokuapp.com/usuarios/details';
         var token = $cookies.getObject('token');
         var request = $http({
             url: uri,
