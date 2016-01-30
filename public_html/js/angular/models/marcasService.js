@@ -9,7 +9,7 @@ miApp.service('marcasService', function ($http, $q, $cookies) {
         var datosRecu = null;
         var deferred = $q.defer();
         var token = $cookies.getObject('token');
-        $http.get('http://localhost:8080/marcas/list', {
+        $http.get('https://naturaapp.herokuapp.com/marcas/list', {
             headers: {
                 'Authorization': 'Bearer ' + token.access_token
             }
