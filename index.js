@@ -12,7 +12,9 @@ function requireHTTPS(req, res, next) {
     }
     next();
 }
-app.use(requireHTTPS);
+app.get('*', function(req, res, next) {
+  requireHTTPS(req, res, next);
+});
 app.use(express.static(__dirname + '/public_html'));
 var server = app.listen(process.env.PORT || 443);
 
