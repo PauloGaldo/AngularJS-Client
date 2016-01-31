@@ -12,7 +12,7 @@ app.get('/', function(req, res) {
 });
 
 var server = app.listen(process.env.PORT || 80);
-
+/**
 function requireHTTPS(req, res, next) {
     if (!req.secure) {
         //FYI this should work for local development as well
@@ -22,7 +22,7 @@ function requireHTTPS(req, res, next) {
 }
 
 app.use(requireHTTPS);
-app.get('/', routeHandlerHome);
+app.get('/', routeHandlerHome); */
 
 
 
