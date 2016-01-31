@@ -22,9 +22,8 @@ function requireHTTPS(req, res, next) {
     }
     next();
 }
-
 app.use(requireHTTPS);
-app.get('/', routeHandlerHome); 
+
 
 
 
