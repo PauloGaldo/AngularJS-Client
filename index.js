@@ -18,7 +18,6 @@ function requireHTTPS(req, res, next) {
 }
 app.use(requireHTTPS);
 
-var server = app.listen(443);
 
 
 
