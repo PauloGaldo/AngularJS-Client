@@ -12,9 +12,11 @@ app.get('/', function(req, res) {
 });
 
 var server = app.listen(process.env.PORT || 80);
-/**
+
 function requireHTTPS(req, res, next) {
     if (!req.secure) {
+        console.log(req);
+        console.log(res);
         //FYI this should work for local development as well
         return res.redirect('https://' + req.get('host') + req.url);
     }
@@ -22,7 +24,7 @@ function requireHTTPS(req, res, next) {
 }
 
 app.use(requireHTTPS);
-app.get('/', routeHandlerHome); */
+app.get('/', routeHandlerHome); 
 
 
 
