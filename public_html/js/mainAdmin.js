@@ -46,6 +46,13 @@ var miApp = angular.module('Natura', ['ngRoute', 'ngTable', 'ngCookies', 'angula
                     });
         })
         .run(function ($rootScope, $location, $cookies, $window, usuariosService, factoryCache, $routeParams) {
+                var forceSSL = function () {
+                if ($location.protocol() !== 'https') {
+                    $window.location.href = $location.absUrl().replace('http', 'https');
+                    console.log("https bitch!");
+                }
+            };
+            forceSSL();
             $rootScope.render = $cookies.get('render');
             var token = $cookies.getObject('token');
             $rootScope.$on('$routeChangeStart', function () {
