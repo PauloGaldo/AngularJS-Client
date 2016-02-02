@@ -24,13 +24,13 @@ var miApp = angular.module('Natura', ['ngRoute', 'ngCookies'])
                     });
         })
         .run(function ($rootScope, $location, $cookies, $window, loginService) {
-            var forceSSL = function () {
+           /* var forceSSL = function () {
                 if ($location.protocol() !== 'https') {
                     $window.location.href = $location.absUrl().replace('http', 'https');
                     console.log("https bitch!");
                 }
             };
-            forceSSL();
+            forceSSL(); */
             $rootScope.render = $cookies.get('render');
             var data = $cookies.getObject('token');
             $rootScope.$on('$routeChangeStart', function () {
